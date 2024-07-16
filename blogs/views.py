@@ -3,6 +3,10 @@ from .models import Topic, Note
 from .forms import PostForm, NoteForm
 from django.contrib.auth.decorators import login_required
 
+# первый комментарий
+# второй комментарий
+# третий комментарий
+
 
 # Create your views here.
 
