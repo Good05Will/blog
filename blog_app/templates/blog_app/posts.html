@@ -1,0 +1,24 @@
+{% extends "blog_app/base.html" %}
+
+{% block page_header %}
+  <h3>Темы: </h3>
+{% endblock page_header %}
+
+{% block content %}
+
+  <ul>
+    <h6><a class="nav-link" href="{% url 'blog_app:new_post' %}">Новая тема</a></h6>
+      <ul>
+        {% for post in posts %}
+        <li>
+          <h5><a class="nav-link" href="{% url 'blog_app:post' post.id %}">
+            {{ post.title.upper|linebreaks }}
+          </a></h5>
+        </li>
+        {% empty %}
+        <li>Список пуст</li>
+        {% endfor %}
+      </ul>
+  </ul>
+
+{% endblock content %}

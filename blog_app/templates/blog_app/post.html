@@ -1,0 +1,27 @@
+{% extends "blog_app/base.html" %}
+
+{% block page_header %}
+  <h5><small>Раздел:</small> {{ post.title.upper }}</h5>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    <h6><a class="nav-link" href="{% url 'blog_app:new_note' post.id %}">Новая запись</a></h6>
+    <ul>
+        {% for note in notes %}
+        <h6 class="card-header"><small>{{ note.date_add|date:'M d, Y H:i' }}</small></h6>
+        <div class="card mb-3">
+            <h4 class="card-header">{{ note.title }}</h4>
+            <div class="card-body">{{ note.text|linebreaks }}</div>
+            <h6 class="card-header">
+                <small><a class="nav-link" href="{% url 'blog_app:edit_note' note.id %}">
+                    Редактировать
+                </a></small>
+            </h6>
+        </div>
+        {% empty %}
+        <p>НЕТУ ЗАПИСЕЙ.</p>
+        {% endfor %}
+    </ul></ul>
+{% endblock content %}
+

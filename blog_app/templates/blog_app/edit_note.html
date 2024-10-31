@@ -1,0 +1,16 @@
+{% extends "blog_app/base.html" %}
+
+{% block content %}
+
+<h6 class="card-header"><small>
+  <p>Раздел: {{ post }}</p>
+  <p>Редактирование записи: <big>{{note.title}}</big></p>
+</small></h6>
+
+  <form action="{% url 'blog_app:edit_note' note.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Сохранить</button>
+  </form>
+
+{% endblock content %}
